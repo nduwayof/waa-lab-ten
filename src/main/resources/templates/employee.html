@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee</title>
+    <style>
+        .container{
+            width: 900px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <fieldset>
+        <legend>New Address</legend>
+        <form action="/employee/save" method="post" th:object="${employee}">
+            <input type="text" th:field="*{id}" hidden>
+            <p>
+                <label for="firstName">First name</label>
+                <input type="text" th:field="*{firstName}" id="firstName" required>
+            </p>
+            <p>
+                <label for="lastName">Last name</label>
+                <input type="text"  th:field="*{lastName}" id="lastName" required>
+            </p>
+            <p>
+                <label for="email">Email</label>
+                <input type="text" name="city" th:field="*{email}" id="email">
+            </p>
+            <p>
+                <label for="phoneNumber">Phone number</label>
+                <input type="text" name="phoneNumber" th:field="*{phoneNumber}" id="phoneNumber">
+            </p>
+            <p>
+                <label for="state">Address</label>
+                <select name="address" id="state" th:field="*{address}">
+                    <option selected disabled value="---">--Select the address--</option>
+                    <option th:each="address : ${addressList}"
+                            th:value="${address.id}"
+                            th:text="${address.street +','+address.zipCode+','+address.state}">IOWA</option>
+                </select>
+            </p>
+            <input type="submit" value="SUBMIT">
+        </form>
+    </fieldset>
+    <hr>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Phone number</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="employee : ${employeeList}">
+            <td th:text="${employee.id}">Id</td>
+            <td th:text="${employee.firstName}">Street</td>
+            <td th:text="${employee.lastName}">Zip code</td>
+            <td th:text="${employee.phoneNumber}">City</td>
+            <td th:text="${employee.email}">State</td>
+            <td th:text="${employee.address.street +', '+employee.address.zipCode+', '+employee.address.state}">Country</td>
+            <td><a th:href="@{/employee/delete/{id}(id=${employee.id})}">delete</a></td>
+            <td><a th:href="@{/employee/update/{id}(id=${employee.id})}">update</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

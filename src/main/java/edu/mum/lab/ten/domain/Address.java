@@ -5,6 +5,12 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
+/**
+ * The type Address.
+ *
+ * @author nduwayofabrice
+ * @version 1.0
+ */
 @Data
 @Entity
 @Table(name = "ADDRESS")

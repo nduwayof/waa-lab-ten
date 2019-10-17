@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+    <style>
+        .container{
+            width: 900px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <fieldset>
+        <legend>New Address</legend>
+        <form action="/address/save" method="post" th:object="${address}">
+            <input type="text" th:field="*{id}" hidden>
+            <p>
+                <label for="street">Street</label>
+                <input type="text" th:field="*{street}" id="street" required>
+            </p>
+            <p>
+                <label for="zipCode">Zip code</label>
+                <input type="number"  th:field="*{zipCode}" id="zipCode" required>
+            </p>
+            <p>
+                <label for="city">City</label>
+                <input type="text" name="city" th:field="*{city}" id="city">
+            </p>
+            <p>
+                <label for="state">State</label>
+                <select name="state" id="state" th:field="*{state}">
+                    <option selected disabled value="---">--Select the state--</option>
+                    <option value="AI">IOWA</option>
+                    <option value="IL">ILLINOIS</option>
+                    <option value="NY">NEW YORK</option>
+                </select>
+            </p>
+            <p>
+                <label for="country">Country</label>
+                <select name="country" id="country" th:field="*{country}">
+                    <option value="US" selected>United States</option>
+                </select>
+            </p>
+            <input type="submit" value="SUBMIT">
+        </form>
+    </fieldset>
+</div>
+</body>
+</html>

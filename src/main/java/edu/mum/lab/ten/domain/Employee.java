@@ -6,6 +6,12 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+/**
+ * The type Employee.
+ *
+ * @author nduwayofabrice
+ * @version 1.0
+ */
 @Data
 @Entity
 @Table(name = "EMPLOYEE", uniqueConstraints = {@UniqueConstraint(

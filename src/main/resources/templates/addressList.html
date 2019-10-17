@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Addresses List</title>
+    <style>
+        .container{
+            width: 900px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Street</th>
+            <th>ZipCode</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Country</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="address : ${addressList}">
+            <td th:text="${address.id}">Id</td>
+            <td th:text="${address.street}">Street</td>
+            <td th:text="${address.zipCode}">Zip code</td>
+            <td th:text="${address.city}">City</td>
+            <td th:text="${address.state}">State</td>
+            <td th:text="${address.country}">Country</td>
+            <td><a th:href="@{/address/delete/{id}(id=${address.id})}">delete</a></td>
+            <td><a th:href="@{/address/update/{id}(id=${address.id})}">update</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
